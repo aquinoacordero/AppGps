@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.admin.appgps.MainActivity"
+    android:background="#9650c3">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Latitude"
+        android:id="@+id/textViewLat"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="#1bb6ce"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/textViewLong"
+        android:layout_marginTop="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Longitude"
+        android:id="@+id/textViewLong"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="#1bb6ce"
+        android:layout_below="@+id/editTextLat"
+        android:layout_alignStart="@+id/editTextLong"
+        android:layout_marginTop="15dp" />
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextLat"
+        android:layout_below="@+id/textViewLat"
+        android:layout_alignStart="@+id/textViewLat"
+        android:layout_marginTop="5dp" />
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextLong"
+        android:layout_below="@+id/textViewLong"
+        android:layout_alignStart="@+id/butLoc"
+        android:layout_marginTop="5dp" />
+
+    <!--android:background="@drawable/but"-->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Locate"
+        android:id="@+id/butLoc"
+        android:textStyle="bold"
+        android:allowUndo="false"
+        android:textColor="#ceb31b"
+        android:textSize="20dp"
+        android:typeface="sans"
+        android:singleLine="false"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/editTextLong"
+        android:layout_alignStart="@+id/butMap"
+        android:background="@drawable/imagbut" />
+
+
+        <!--android:background="@drawable/but"-->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Map"
+        android:id="@+id/butMap"
+        android:textStyle="bold"
+        android:allowUndo="false"
+        android:textColor="#ceb31b"
+        android:textSize="20dp"
+        android:typeface="sans"
+        android:singleLine="false"
+        android:layout_below="@+id/butLoc"
+        android:layout_alignStart="@+id/textViewResult"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/imagbut" />
+
+    <TextView
+        android:layout_width="400dp"
+        android:layout_height="150dp"
+        android:id="@+id/textViewResult"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="#e1772b"
+        android:padding="2dp"
+        android:elegantTextHeight="false"
+        android:singleLine="false"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="18dp"
+        android:textStyle="bold|italic"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp" />
+
+
+</RelativeLayout>

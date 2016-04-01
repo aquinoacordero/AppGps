@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">AppGPS</string>
+    <string name="botonVentana">CAMBIAR DE VENTANA</string>
+    <string name="decision">Tome una decision</string>
+    <string name="cambiar">Cambiar</string>
+    <string name="volver">Volver</string>
+    <string name="title_activity_maps">Map</string>
+</resources>
