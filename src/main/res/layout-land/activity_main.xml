@@ -54,16 +54,15 @@
         android:id="@+id/butLoc"
         android:textStyle="bold"
         android:allowUndo="false"
-        android:textColor="#ceb31b"
+        android:textColor="#211bce"
         android:textSize="20dp"
         android:typeface="sans"
         android:singleLine="false"
-        android:background="@drawable/imagbut"
-        android:layout_alignTop="@+id/textViewLong"
+        android:layout_alignParentTop="true"
         android:layout_alignEnd="@+id/textViewResult" />
 
 
-        <!--android:background="@drawable/but"-->
+    <!--android:background="@drawable/but"-->
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -71,13 +70,24 @@
         android:id="@+id/butMap"
         android:textStyle="bold"
         android:allowUndo="false"
-        android:textColor="#ceb31b"
+        android:textColor="#211bce"
         android:textSize="20dp"
         android:typeface="sans"
         android:singleLine="false"
-        android:background="@drawable/imagbut"
-        android:layout_alignTop="@+id/textViewLat"
+        android:layout_alignBottom="@+id/editTextLong"
         android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Voice"
+        android:id="@+id/butCallVoice"
+        android:textColor="#211bce"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/butLoc" />
 
     <TextView
         android:layout_width="600dp"

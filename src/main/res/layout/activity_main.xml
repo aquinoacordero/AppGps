@@ -19,8 +19,7 @@
         android:textStyle="bold"
         android:textColor="#1bb6ce"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/textViewLong"
-        android:layout_marginTop="20dp" />
+        android:layout_alignStart="@+id/textViewResult" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -31,8 +30,8 @@
         android:textStyle="bold"
         android:textColor="#1bb6ce"
         android:layout_below="@+id/editTextLat"
-        android:layout_alignStart="@+id/editTextLong"
-        android:layout_marginTop="15dp" />
+        android:layout_alignStart="@+id/editTextLat"
+        android:layout_marginTop="20dp" />
 
     <EditText
         android:layout_width="300dp"
@@ -47,8 +46,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/editTextLong"
         android:layout_below="@+id/textViewLong"
-        android:layout_alignStart="@+id/butLoc"
-        android:layout_marginTop="5dp" />
+        android:layout_alignStart="@+id/textViewLong" />
 
     <!--android:background="@drawable/but"-->
     <Button
@@ -58,14 +56,13 @@
         android:id="@+id/butLoc"
         android:textStyle="bold"
         android:allowUndo="false"
-        android:textColor="#ceb31b"
+        android:textColor="#211bce"
         android:textSize="20dp"
         android:typeface="sans"
         android:singleLine="false"
-        android:layout_marginTop="40dp"
         android:layout_below="@+id/editTextLong"
-        android:layout_alignStart="@+id/butMap"
-        android:background="@drawable/imagbut" />
+        android:layout_alignStart="@+id/editTextLong"
+        android:layout_marginTop="26dp" />
 
 
         <!--android:background="@drawable/but"-->
@@ -76,14 +73,12 @@
         android:id="@+id/butMap"
         android:textStyle="bold"
         android:allowUndo="false"
-        android:textColor="#ceb31b"
+        android:textColor="#211bce"
         android:textSize="20dp"
         android:typeface="sans"
         android:singleLine="false"
-        android:layout_below="@+id/butLoc"
-        android:layout_alignStart="@+id/textViewResult"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/imagbut" />
+        android:layout_alignTop="@+id/butLoc"
+        android:layout_alignEnd="@+id/editTextLong" />
 
     <TextView
         android:layout_width="400dp"
@@ -91,7 +86,7 @@
         android:id="@+id/textViewResult"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:background="#e1772b"
+        android:background="#d58e5b"
         android:padding="2dp"
         android:elegantTextHeight="false"
         android:singleLine="false"
@@ -103,6 +98,17 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
         android:layout_marginTop="20dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Voice"
+        android:id="@+id/butCallVoice"
+        android:textColor="#211bce"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_above="@+id/textViewResult"
+        android:layout_alignStart="@+id/butLoc" />
 
 
 </RelativeLayout>

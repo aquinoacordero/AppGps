@@ -34,12 +34,13 @@ import java.net.URL;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     Button map;
-    Button location;
+    Button location, voice;
     EditText latitude;
     EditText longitude;
     TextView res;
     Location l;
     int pos;
+    String zone="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,12 +49,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         map = (Button)findViewById(R.id.butMap);
         location = (Button)findViewById(R.id.butLoc);
+        voice = (Button)findViewById(R.id.butCallVoice);
         latitude = (EditText)findViewById(R.id.editTextLat);
         longitude = (EditText)findViewById(R.id.editTextLong);
         res = (TextView)findViewById(R.id.textViewResult);
 
         location.setOnClickListener(this);
         map.setOnClickListener(this);
+        voice.setOnClickListener(this);
 
         WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
         Display display = wm.getDefaultDisplay();
@@ -73,7 +76,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v){
 
-        final Intent intent = new Intent(MainActivity.this, MapsActivity.class);
+        Intent intent = new Intent(this, MapsActivity.class);
+        Intent intentV = new Intent(this, VoiceActivity.class);
 
         switch(v.getId()){
 
@@ -98,36 +102,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 //res.setText("mapa");
 
-                handler.postDelayed(new Runnable() {
+                Integer lon = Integer.parseInt(longitude.getText().toString());
+                Integer lat = Integer.parseInt(latitude.getText().toString());
 
-                    public void run() {
+                if (lon == null || lat == null) {
+                    Toast aviso = Toast.makeText(getApplicationContext(), "Nedd enter data", Toast.LENGTH_SHORT);
+                    aviso.setGravity(Gravity.TOP, 0, 0);
+                    aviso.show();
+                } else {
+                    intent.putExtra("longitud", lon);
+                    intent.putExtra("latitud", lat);
+                    intent.putExtra("call", 1);
+                    intent.putExtra("zone",zone);
+                    startActivity(intent);
+                }
+                break;
 
-                        try {
-                            Integer lon = Integer.parseInt(longitude.getText().toString());
-                            Integer lat = Integer.parseInt(latitude.getText().toString());
+            case R.id.butCallVoice:
 
-                            if(lon==null || lat==null) {
-                                Toast aviso = Toast.makeText(getApplicationContext(), "Nedd enter data", Toast.LENGTH_SHORT);
-                                aviso.setGravity(Gravity.TOP, 0, 0);
-                                aviso.show();
-                            }else{
-                                intent.putExtra("longitud", lon);
-                                intent.putExtra("latitud", lat);
-                                startActivity(intent);
-                            }
-                        }catch(NumberFormatException nfe){
-                            System.out.println("ERROR");
-                        }
+                Toast aviso = Toast.makeText(getApplicationContext(), "Voice", Toast.LENGTH_SHORT);
+                aviso.show();
 
-                    }
-                }, 2000);
-
+                startActivity(intentV);
 
 
             default:
                 break;
         }
     }
+
 
     public class Location extends AsyncTask<String,Integer,String>{
 
@@ -173,6 +176,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     if (resultJSON.length()>0){
                         dir = resultJSON.getJSONObject(0).getString("formatted_address");    // dentro del results pasamos a Objeto la seccion formated_addres
                     }
+                        zone = dir;
                         return_Dir = "Direction: " + dir;
                     }
 

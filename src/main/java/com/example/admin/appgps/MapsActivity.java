@@ -19,7 +19,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
     private  String city;
-    int lon, lat;
+    int lon, lat, lonV, latV, call;
+    String zone="NONE";
     Button pos,hyb,ter,sat;
 
     @Override
@@ -41,16 +42,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        Bundle valors=this.getIntent().getExtras();
-        lon = valors.getInt("longitud");
-        lat = valors.getInt("latitud");
-
     }
 
     public void botonDeAitor(View v){
+
         Context context = getApplicationContext();
         int duration = Toast.LENGTH_SHORT;
-        Toast.makeText(context, "Latitude: "+lat+" Longitude: "+lon, duration).show();
+        if(call==1) {
+            Toast.makeText(context, "Latitude: "+lat+" Longitude: "+lon, duration).show();
+        }else{
+            Toast.makeText(context, "Latitude: "+latV+" Longitude: "+lonV, duration).show();
+        }
+
+
     }
 
     @Override
@@ -69,8 +73,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 break;
             default:
                 break;
-
-
         }
     }
     /**
@@ -84,13 +86,28 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        Bundle valors=this.getIntent().getExtras();
+        LatLng sydney = null;
+        call = valors.getInt("call");
+
+        lon = valors.getInt("longitud");
+        lat = valors.getInt("latitud");
+        lonV = valors.getInt("lonV");
+        latV = valors.getInt("latV");
+        zone = valors.getString("zone");
+
         mMap = googleMap;
-        city="Sidney";
+        city=zone;
+
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(lon, lat);
+        if(call==1) {
+            sydney = new LatLng(lon, lat);
+        }else{
+            sydney = new LatLng(lonV, latV);
+        }
         //LatLng sydney = new LatLng(-34, 151);
 
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in "+city));
+        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in: "+city));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 }
