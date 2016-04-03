@@ -28,6 +28,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
+        //Asignamos cada elemento con su id
         pos = (Button)findViewById(R.id.toast);
         hyb = (Button)findViewById(R.id.hybrid);
         ter = (Button)findViewById(R.id.terrain);
@@ -44,7 +45,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
-    public void botonDeAitor(View v){
+    public void botonDeAitor(View v){ //Mostrar las coordenadas
 
         Context context = getApplicationContext();
         int duration = Toast.LENGTH_SHORT;
@@ -58,7 +59,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View v) { //Intercambiar estados de vista del mapa
 
         switch (v.getId()){
 
@@ -85,7 +86,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      * installed Google Play services and returned to the app.
      */
     @Override
-    public void onMapReady(GoogleMap googleMap) {
+    public void onMapReady(GoogleMap googleMap) { //Cuando la activity es ejecutada se carga el mapa
         Bundle valors=this.getIntent().getExtras();
         LatLng sydney = null;
         call = valors.getInt("call");
@@ -99,14 +100,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
         city=zone;
 
-        // Add a marker in Sydney and move the camera
-        if(call==1) {
+        // Add a marker in the zone where is the marker
+        if(call==1) {//COmprovamos si se llamo la activity desde Main o Voice
             sydney = new LatLng(lon, lat);
         }else{
             sydney = new LatLng(lonV, latV);
         }
         //LatLng sydney = new LatLng(-34, 151);
 
+        //Situamos un marcador en las coordenadas le pasamos un nombre y posicionamos la camara en este
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in: "+city));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
